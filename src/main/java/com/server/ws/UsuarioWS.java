@@ -47,6 +47,7 @@ public class UsuarioWS {
         return Response.status(200).entity(usuario).build();
     }
     
+    //Adding a test commit for Git
     @GET
     @Path("/get")
     @ApiOperation(value="Retrieves all users")
