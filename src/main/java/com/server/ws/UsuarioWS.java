@@ -11,18 +11,18 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-
-@Component
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component;
+//
+//
+//@Component
 @Path("/usuario")
 public class UsuarioWS {
     
     @Context
     private UriInfo context;
     
-    @Autowired
+    //@Autowired
     private UsuarioService usuarioService;
     
     public UsuarioWS()
