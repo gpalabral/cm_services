@@ -6,7 +6,9 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -56,6 +58,19 @@ public class UsuarioWS {
         List<Usuario> usuariosList=usuarioService.getUsuarios();
         return Response.status(200).entity(usuariosList).build();
     }
+    
+    @PUT
+    @Path("/put")
+    @ApiOperation(value="operation to save a user")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response putUsuario(
+		@ApiParam(value="user",required=true)  Usuario usuario) {
+        System.out.println("usuarioService:::: "+usuarioService);
+        usuario=usuarioService.persistUsuario(usuario);
+        
+        return Response.status(200).entity(usuario).build();
+    }
+    
 
     
 }
