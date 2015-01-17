@@ -13,6 +13,8 @@ public interface UsuarioService {
 
     Usuario mergeUsuario(Usuario usuario);//UPDATE
     
-    void removeUsuario(Usuario usuario);//DELETE
+    void removeUsuario(String idUsuario);//DELETE
+    
+   
     
 }

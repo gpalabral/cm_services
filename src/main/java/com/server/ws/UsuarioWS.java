@@ -5,8 +5,10 @@ import com.server.service.UsuarioService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
+import com.wordnik.swagger.jaxrs.PATCH;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -61,7 +63,7 @@ public class UsuarioWS {
     
     @PUT
     @Path("/put")
-    @ApiOperation(value="operation to save a user")
+    @ApiOperation(value="operation to INSERT a user")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response putUsuario(
 		@ApiParam(value="user",required=true)  Usuario usuario) {
@@ -69,6 +71,30 @@ public class UsuarioWS {
         usuario=usuarioService.persistUsuario(usuario);
         
         return Response.status(200).entity(usuario).build();
+    }
+    
+    @PATCH
+    @Path("/patch")
+    @ApiOperation(value="operation to UPDATE a user")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response patchUsuario(
+		@ApiParam(value="user",required=true)  Usuario usuario) {
+        System.out.println("usuarioService:::: "+usuarioService);
+        usuario=usuarioService.mergeUsuario(usuario);
+        
+        return Response.status(200).entity(usuario).build();
+    }
+    
+    @DELETE
+    @Path("/delete")
+    @ApiOperation(value="operation to DELETE a user")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteUsuario(
+		@ApiParam(value="idUsuario",required=true) @QueryParam("idUsuario")  String idUsuario) {
+        System.out.println("usuarioService:::: "+usuarioService);
+        usuarioService.removeUsuario(idUsuario);
+        
+        return Response.status(200).entity(idUsuario).build();
     }
     
 

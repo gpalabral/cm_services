@@ -5,15 +5,24 @@
 package com.server.service.impl;
 
 import com.server.entity.Usuario;
+import com.server.service.AbstractJpaDAO;
 import com.server.service.UsuarioService;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author gus
  */
-public class UsuarioServiceImpl implements UsuarioService {
+@Repository
+public class UsuarioServiceImpl extends AbstractJpaDAO<Usuario> implements UsuarioService {
 
+    public UsuarioServiceImpl() {
+        super();
+
+        setClazz(Usuario.class);
+    }
+    
     public Usuario login(String user, String password) {
         System.out.println("Authenticating the user........"+user+"..... "+password);
         Usuario usuario=new Usuario();
@@ -35,8 +44,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void removeUsuario(Usuario usuario) {
+    public void removeUsuario(String idUsuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
