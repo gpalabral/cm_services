@@ -16,8 +16,8 @@
     
     <context:property-placeholder location="classpath:persistence-mysql.properties" />
     <context:annotation-config/>	
-    <context:component-scan base-package="com.bap.erp.ws" />
-    <tx:annotation-driven/>
+    <context:component-scan base-package="com.server" />
+    <tx:annotation-driven transaction-manager="transactionManager"/>
     
     
 
@@ -54,9 +54,11 @@
     <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
     
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+    
     <!--**********************SERVICES***************************-->
-    <bean id="usuarioService" class="com.server.service.impl.UsuarioServiceImpl">
-    </bean>  
+    <!--bean id="usuarioService" class="com.server.service.impl.UsuarioServiceImpl">
+    </bean-->  
     
 
 </beans>

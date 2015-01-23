@@ -5,23 +5,25 @@
 package com.server.service.impl;
 
 import com.server.entity.Usuario;
-import com.server.service.AbstractJpaDAO;
+import com.server.service.IGenericDao;
 import com.server.service.UsuarioService;
 import java.util.List;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author gus
- */
-@Repository
-public class UsuarioServiceImpl extends AbstractJpaDAO<Usuario> implements UsuarioService {
+//@Repository
 
-    public UsuarioServiceImpl() {
-        super();
+@Service
+public class UsuarioServiceImpl implements UsuarioService {
+    
+    IGenericDao<Usuario> dao;
+    
+   @Autowired
+   public void setDao( IGenericDao<Usuario> daoToSet ){
+      dao = daoToSet;
+      dao.setClazz(Usuario.class );
+   }
 
-        setClazz(Usuario.class);
-    }
     
     public Usuario login(String user, String password) {
         System.out.println("Authenticating the user........"+user+"..... "+password);
@@ -37,7 +39,8 @@ public class UsuarioServiceImpl extends AbstractJpaDAO<Usuario> implements Usuar
     }
 
     public Usuario persistUsuario(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dao.create(usuario);
+        return usuario;
     }
 
     public Usuario mergeUsuario(Usuario usuario) {
