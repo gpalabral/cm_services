@@ -24,7 +24,7 @@
     <!--***********************PERSISTENCE****************************-->
     <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.server.entity" />
+        <property name="packagesToScan" value="com.bap.erp.modelo.entity" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
             <!-- <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
