@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-@Component
+//@Component
 @Path("/usuario")
 @Api(value="usuario", description="WS for Usuario")
 public class UsuarioWS {

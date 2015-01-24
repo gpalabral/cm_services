@@ -1,8 +1,10 @@
-package com.bap.erp.modelo.entity;
+package com.bap.erp.modelo.cpp;
 
+import com.bap.erp.modelo.AbstractEntity;
 import com.bap.erp.modelo.ERP;
+import com.bap.erp.modelo.par.ParRecurrencia;
+import com.bap.erp.modelo.par.ParTipoGrupo;
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,95 +12,79 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "CPP_GRUPO")
-public class CppGrupo implements Serializable {
+public class CppGrupo extends AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = ERP.serialVersionIdErp;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_grupo", nullable = false)
     private Long idGrupo;
-    @Column(name = "nombre", length = 50)
+    
+    @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
 
     @ManyToOne()
     @JoinColumn(name = "par_recurrencia", 
-                referencedColumnName = "codigo")
+                referencedColumnName = "codigo",nullable=true)
     private ParRecurrencia parRecurrencia;
 
     @ManyToOne
-    @JoinColumn(name = "par_tipo_grupo", referencedColumnName = "codigo")
+    @JoinColumn(name = "par_tipo_grupo", referencedColumnName = "codigo",nullable=true)
     private ParTipoGrupo parTipoGrupo;
 
-    @Column(name = "fecha_alta", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-    @Column(name = "usuario_alta", length = 50, nullable = false)
-    private String usuarioAlta;
-    @Column(name = "fecha_modificacion", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-    @Column(name = "usuario_modificacion", length = 50, nullable=false)
-    private String usuarioModificacion;
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
-    @Column(name = "usuario_baja", length = 50)
-    private String usuarioBaja;
-
-    public Date getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(Date fechaAlta) {
-        this.fechaAlta = fechaAlta;
-    }
-
-    public String getUsuarioAlta() {
-        return usuarioAlta;
-    }
-
-    public void setUsuarioAlta(String usuarioAlta) {
-        this.usuarioAlta = usuarioAlta;
-    }
-
-    public Date getFechaModificacion() {
-        return fechaModificacion;
-    }
-
-    public void setFechaModificacion(Date fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
-    }
-
-    public String getUsuarioModificacion() {
-        return usuarioModificacion;
-    }
-
-    public void setUsuarioModificacion(String usuarioModificacion) {
-        this.usuarioModificacion = usuarioModificacion;
-    }
-
-    public Date getFechaBaja() {
-        return fechaBaja;
-    }
-
-    public void setFechaBaja(Date fechaBaja) {
-        this.fechaBaja = fechaBaja;
-    }
-
-    public String getUsuarioBaja() {
-        return usuarioBaja;
-    }
-
-    public void setUsuarioBaja(String usuarioBaja) {
-        this.usuarioBaja = usuarioBaja;
-    }
+  
+//
+//    public Date getFechaAlta() {
+//        return fechaAlta;
+//    }
+//
+//    public void setFechaAlta(Date fechaAlta) {
+//        this.fechaAlta = fechaAlta;
+//    }
+//
+//    public String getUsuarioAlta() {
+//        return usuarioAlta;
+//    }
+//
+//    public void setUsuarioAlta(String usuarioAlta) {
+//        this.usuarioAlta = usuarioAlta;
+//    }
+//
+//    public Date getFechaModificacion() {
+//        return fechaModificacion;
+//    }
+//
+//    public void setFechaModificacion(Date fechaModificacion) {
+//        this.fechaModificacion = fechaModificacion;
+//    }
+//
+//    public String getUsuarioModificacion() {
+//        return usuarioModificacion;
+//    }
+//
+//    public void setUsuarioModificacion(String usuarioModificacion) {
+//        this.usuarioModificacion = usuarioModificacion;
+//    }
+//
+//    public Date getFechaBaja() {
+//        return fechaBaja;
+//    }
+//
+//    public void setFechaBaja(Date fechaBaja) {
+//        this.fechaBaja = fechaBaja;
+//    }
+//
+//    public String getUsuarioBaja() {
+//        return usuarioBaja;
+//    }
+//
+//    public void setUsuarioBaja(String usuarioBaja) {
+//        this.usuarioBaja = usuarioBaja;
+//    }
 
     @Override
     public int hashCode() {

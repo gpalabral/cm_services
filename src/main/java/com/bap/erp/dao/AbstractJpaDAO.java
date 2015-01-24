@@ -1,10 +1,11 @@
-package com.server.service;
+package com.bap.erp.dao;
 
 import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 public abstract class AbstractJpaDAO<T extends Serializable> {
 
@@ -26,7 +27,9 @@ public abstract class AbstractJpaDAO<T extends Serializable> {
         return entityManager.createQuery("from " + clazz.getName()).getResultList();
     }
 
+    @Transactional
     public void create(final T entity) {
+        System.out.println("Persisting:::: "+entity);
         entityManager.persist(entity);
     }
 

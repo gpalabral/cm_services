@@ -5,13 +5,11 @@
 package com.server.service.impl;
 
 import com.server.entity.Usuario;
-import com.server.service.IGenericDao;
+import com.bap.erp.dao.IGenericDao;
 import com.server.service.UsuarioService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-//@Repository
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {

@@ -10,13 +10,13 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 @Path("/hello")
-@Api(value="hello", description="Sample hello world application")
+//@Api(value="hello", description="Sample hello world application")
 public class HelloWorldService {
 
 	@GET
 	@Path("/{param}")
-	@ApiOperation(value="just to test the sample api")
-	public Response getMsg(@ApiParam(value="param",required=true)@PathParam("param") String msg ) {
+//	@ApiOperation(value="just to test the sample api")
+	public Response getMsg(/*@ApiParam(value="param",required=true)*/@PathParam("param") String msg ) {
  
 		String output = "Hello : " + msg;
  

@@ -16,7 +16,7 @@
     
     <context:property-placeholder location="classpath:persistence-mysql.properties" />
     <context:annotation-config/>	
-    <context:component-scan base-package="com.server" />
+    <context:component-scan base-package="com.bap.erp.dao;com.bap.erp.servicios;com.bap.erp.ws" />
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
     
@@ -24,7 +24,7 @@
     <!--***********************PERSISTENCE****************************-->
     <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="com.bap.erp.modelo.entity" />
+        <property name="packagesToScan" value="com.bap.erp.modelo" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
             <!-- <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
@@ -32,12 +32,12 @@
                 <property name="databasePlatform" value="${persistence.dialect}" />
             </bean> -->
         </property>
-        <property name="jpaProperties">
+        <!--property name="jpaProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
             </props>
-        </property>
+        </property-->
     </bean>
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

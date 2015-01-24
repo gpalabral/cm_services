@@ -1,4 +1,4 @@
-package com.server.service;
+package com.bap.erp.dao;
 
 import java.io.Serializable;
 import org.springframework.beans.factory.config.BeanDefinition;

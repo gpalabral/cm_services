@@ -1,4 +1,4 @@
-package com.bap.erp.modelo.entity;
+package com.bap.erp.modelo.cpp;
 
 import com.bap.erp.modelo.ERP;
 import java.io.Serializable;

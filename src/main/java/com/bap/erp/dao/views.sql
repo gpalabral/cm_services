@@ -9,7 +9,7 @@ CREATE VIEW par_recurrencia AS
         from
             par_valor
         where
-            contexto = 'recurrencia' and fecha_baja is null
+            contexto = 'RECURRENCIA' and fecha_baja is null
     );
 
 /**
@@ -23,5 +23,5 @@ CREATE VIEW par_tipo_grupo AS
         from
             par_valor
         where
-            contexto = 'tipoGrupo' and fecha_baja is null
+            contexto = 'TIPO_GRUPO' and fecha_baja is null
     );

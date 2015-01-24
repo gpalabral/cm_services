@@ -1,4 +1,4 @@
-package com.server.service;
+package com.bap.erp.dao;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 public interface IGenericDao<T extends Serializable> {
     
     public void setClazz(final Class<T> clazzToSet);
-    
+        
     T findOne(final long id);
  
    List<T> findAll();
