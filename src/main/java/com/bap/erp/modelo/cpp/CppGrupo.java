@@ -7,6 +7,7 @@ import com.bap.erp.modelo.par.ParTipoGrupo;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,64 +28,20 @@ public class CppGrupo extends AbstractEntity implements Serializable {
     @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
 
-    @ManyToOne()
+    @ManyToOne()    
     @JoinColumn(name = "par_recurrencia", 
-                referencedColumnName = "codigo",nullable=true)
+                referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
     private ParRecurrencia parRecurrencia;
-
-    @ManyToOne
-    @JoinColumn(name = "par_tipo_grupo", referencedColumnName = "codigo",nullable=true)
-    private ParTipoGrupo parTipoGrupo;
-
-  
-//
-//    public Date getFechaAlta() {
-//        return fechaAlta;
-//    }
-//
-//    public void setFechaAlta(Date fechaAlta) {
-//        this.fechaAlta = fechaAlta;
-//    }
-//
-//    public String getUsuarioAlta() {
-//        return usuarioAlta;
-//    }
-//
-//    public void setUsuarioAlta(String usuarioAlta) {
-//        this.usuarioAlta = usuarioAlta;
-//    }
-//
-//    public Date getFechaModificacion() {
-//        return fechaModificacion;
-//    }
-//
-//    public void setFechaModificacion(Date fechaModificacion) {
-//        this.fechaModificacion = fechaModificacion;
-//    }
-//
-//    public String getUsuarioModificacion() {
-//        return usuarioModificacion;
-//    }
-//
-//    public void setUsuarioModificacion(String usuarioModificacion) {
-//        this.usuarioModificacion = usuarioModificacion;
-//    }
-//
-//    public Date getFechaBaja() {
-//        return fechaBaja;
-//    }
-//
-//    public void setFechaBaja(Date fechaBaja) {
-//        this.fechaBaja = fechaBaja;
-//    }
-//
-//    public String getUsuarioBaja() {
-//        return usuarioBaja;
-//    }
-//
-//    public void setUsuarioBaja(String usuarioBaja) {
-//        this.usuarioBaja = usuarioBaja;
-//    }
+    
+    @Column(name = "id_cnt_entidad_cta_x_pagar", length = 50, nullable = false)
+    private Long idCntEntidadCtaXPagar;
+    
+    @Column(name = "id_cnt_entidad_doc_x_pagar", length = 50, nullable = false)
+    private Long idCntEntidadDocXPagar;
+    
+    @Column(name = "id_cnt_entidad_anticipo", length = 50, nullable = false)
+    private Long idCntEntidadAnticipo;
+    
 
     @Override
     public int hashCode() {
@@ -108,14 +65,6 @@ public class CppGrupo extends AbstractEntity implements Serializable {
     @Override
     public String toString() {
         return "CppProveedorCliente[ idProveedorCliente=" + idGrupo + " ]";
-    }
-
-    public Long getIdContacto() {
-        return idGrupo;
-    }
-
-    public void setIdContacto(Long idContacto) {
-        this.idGrupo = idContacto;
     }
 
     public Long getIdGrupo() {
@@ -142,12 +91,46 @@ public class CppGrupo extends AbstractEntity implements Serializable {
         this.parRecurrencia = parRecurrencia;
     }
 
-    public ParTipoGrupo getParTipoGrupo() {
-        return parTipoGrupo;
+    /**
+     * @return the idCntEntidadCtaXPagar
+     */
+    public Long getIdCntEntidadCtaXPagar() {
+        return idCntEntidadCtaXPagar;
     }
 
-    public void setParTipoGrupo(ParTipoGrupo parTipoGrupo) {
-        this.parTipoGrupo = parTipoGrupo;
+    /**
+     * @param idCntEntidadCtaXPagar the idCntEntidadCtaXPagar to set
+     */
+    public void setIdCntEntidadCtaXPagar(Long idCntEntidadCtaXPagar) {
+        this.idCntEntidadCtaXPagar = idCntEntidadCtaXPagar;
+    }
+
+    /**
+     * @return the idCntEntidadDocXPagar
+     */
+    public Long getIdCntEntidadDocXPagar() {
+        return idCntEntidadDocXPagar;
+    }
+
+    /**
+     * @param idCntEntidadDocXPagar the idCntEntidadDocXPagar to set
+     */
+    public void setIdCntEntidadDocXPagar(Long idCntEntidadDocXPagar) {
+        this.idCntEntidadDocXPagar = idCntEntidadDocXPagar;
+    }
+
+    /**
+     * @return the idCntEntidadAnticipo
+     */
+    public Long getIdCntEntidadAnticipo() {
+        return idCntEntidadAnticipo;
+    }
+
+    /**
+     * @param idCntEntidadAnticipo the idCntEntidadAnticipo to set
+     */
+    public void setIdCntEntidadAnticipo(Long idCntEntidadAnticipo) {
+        this.idCntEntidadAnticipo = idCntEntidadAnticipo;
     }
     
     

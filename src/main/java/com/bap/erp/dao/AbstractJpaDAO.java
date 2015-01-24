@@ -33,14 +33,17 @@ public abstract class AbstractJpaDAO<T extends Serializable> {
         entityManager.persist(entity);
     }
 
+    @Transactional
     public T update(final T entity) {
         return entityManager.merge(entity);
     }
 
+    @Transactional
     public void delete(final T entity) {
         entityManager.remove(entity);
     }
 
+    @Transactional
     public void deleteById(final long entityId) {
         final T entity = findOne(entityId);
         delete(entity);

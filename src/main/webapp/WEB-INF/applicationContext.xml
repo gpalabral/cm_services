@@ -27,17 +27,14 @@
         <property name="packagesToScan" value="com.bap.erp.modelo" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-            <!-- <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-                <property name="generateDdl" value="${jpa.generateDdl}" />
-                <property name="databasePlatform" value="${persistence.dialect}" />
-            </bean> -->
         </property>
-        <!--property name="jpaProperties">
+        <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+                <!--*** HABILITAR / DESHABILITAR PARA RECREAR LA BD **-->
+                <!--prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop-->
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
             </props>
-        </property-->
+        </property>
     </bean>
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -56,9 +53,4 @@
     
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
     
-    <!--**********************SERVICES***************************-->
-    <!--bean id="usuarioService" class="com.server.service.impl.UsuarioServiceImpl">
-    </bean-->  
-    
-
 </beans>
