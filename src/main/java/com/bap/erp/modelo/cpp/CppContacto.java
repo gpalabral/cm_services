@@ -1,10 +1,13 @@
 package com.bap.erp.modelo.cpp;
 
+import com.bap.erp.modelo.AbstractEntity;
 import com.bap.erp.modelo.ERP;
+import com.bap.erp.modelo.par.ParTipoContacto;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,16 +18,19 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "CPP_CONTACTOS")
-public class CppContactos implements Serializable {
+@Table(name = "CPP_CONTACTO")
+public class CppContacto extends AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = ERP.serialVersionIdErp;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_contacto", nullable = false)
     private Long idContacto;
-    @Column(name = "tipo_contacto", length = 5, nullable = false)
-    private String tipoContacto; //Gerente, ContactoComercial, ContactoDeCobroOPago
+    
+    @ManyToOne()    
+    @JoinColumn(name = "par_tipo_contacto",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
+    private ParTipoContacto parTipoContacto; //Gerente, ContactoComercial, ContactoDeCobroOPago
+       
     @Column(name = "cargo", length = 30)
     private String cargo; 
     @Column(name = "telefono", length = 30)
@@ -38,22 +44,7 @@ public class CppContactos implements Serializable {
     @Column(name = "fecha_aniversario")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAniversario;    
-    @Column(name = "fecha_alta", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-    @Column(name = "usuario_alta", length = 50, nullable = false)
-    private String usuarioAlta;
-    @Column(name = "fecha_modificacion", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;    
-    @Column(name = "usuario_modificacion", length = 50, nullable=false)
-    private String usuarioModificacion;
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;    
-    @Column(name = "usuario_baja", length = 50)
-    private String usuarioBaja;
-    
+        
     @JoinColumn(name = "id_proveedor_cliente", referencedColumnName = "id_proveedor_cliente")
     @ManyToOne(optional = false)
     private CppProveedorCliente cppProveedorCliente;
@@ -67,54 +58,6 @@ public class CppContactos implements Serializable {
         this.correoElectronico = correoElectronico;
     }
 
-    public Date getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(Date fechaAlta) {
-        this.fechaAlta = fechaAlta;
-    }
-
-    public String getUsuarioAlta() {
-        return usuarioAlta;
-    }
-
-    public void setUsuarioAlta(String usuarioAlta) {
-        this.usuarioAlta = usuarioAlta;
-    }
-
-    public Date getFechaModificacion() {
-        return fechaModificacion;
-    }
-
-    public void setFechaModificacion(Date fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
-    }
-
-    public String getUsuarioModificacion() {
-        return usuarioModificacion;
-    }
-
-    public void setUsuarioModificacion(String usuarioModificacion) {
-        this.usuarioModificacion = usuarioModificacion;
-    }
-
-    public Date getFechaBaja() {
-        return fechaBaja;
-    }
-
-    public void setFechaBaja(Date fechaBaja) {
-        this.fechaBaja = fechaBaja;
-    }
-
-    public String getUsuarioBaja() {
-        return usuarioBaja;
-    }
-
-    public void setUsuarioBaja(String usuarioBaja) {
-        this.usuarioBaja = usuarioBaja;
-    }  
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -124,10 +67,10 @@ public class CppContactos implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof CppContactos)) {
+        if (!(object instanceof CppContacto)) {
             return false;
         }
-        CppContactos other = (CppContactos) object;
+        CppContacto other = (CppContacto) object;
         if ((this.idContacto == null && other.idContacto != null) || (this.idContacto != null && !this.idContacto.equals(other.idContacto))) {
             return false;
         }
@@ -136,7 +79,7 @@ public class CppContactos implements Serializable {
 
     @Override
     public String toString() {
-        return "CppProveedorCliente[ idProveedorCliente=" + idContacto + " ]";
+        return "CppContacto[ idContacto=" + idContacto + " ]";
     }
 
     public Long getIdContacto() {
@@ -145,14 +88,6 @@ public class CppContactos implements Serializable {
 
     public void setIdContacto(Long idContacto) {
         this.idContacto = idContacto;
-    }
-
-    public String getTipoContacto() {
-        return tipoContacto;
-    }
-
-    public void setTipoContacto(String tipoContacto) {
-        this.tipoContacto = tipoContacto;
     }
 
     public String getCargo() {
@@ -205,5 +140,12 @@ public class CppContactos implements Serializable {
         this.cppProveedorCliente = cppProveedorCliente;
     }
 
+    public ParTipoContacto getParTipoContacto() {
+        return parTipoContacto;
+    }
+
+    public void setParTipoContacto(ParTipoContacto parTipoContacto) {
+        this.parTipoContacto = parTipoContacto;
+    }    
   
 }

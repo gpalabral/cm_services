@@ -1,7 +1,6 @@
 package com.bap.erp.modelo.par;
 
 import com.bap.erp.modelo.ERP;
-import com.bap.erp.modelo.ERP;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PAR_TIPO_GRUPO")
-public class ParTipoGrupo implements Serializable {
+@Table(name = "PAR_TIPO_DOCUMENTO_MERCANTIL")
+public class ParTipoDocumentoMercantil implements Serializable {
 
     private static final long serialVersionUID = ERP.serialVersionIdErp;    
     @Id
@@ -23,7 +22,7 @@ public class ParTipoGrupo implements Serializable {
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    public ParTipoGrupo() {
+    public ParTipoDocumentoMercantil() {
     }
 
     public String getCodigo() {

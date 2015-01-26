@@ -3,7 +3,6 @@ package com.bap.erp.modelo.cpp;
 import com.bap.erp.modelo.AbstractEntity;
 import com.bap.erp.modelo.ERP;
 import com.bap.erp.modelo.par.ParRecurrencia;
-import com.bap.erp.modelo.par.ParTipoGrupo;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +28,7 @@ public class CppGrupo extends AbstractEntity implements Serializable {
     private String nombre;
 
     @ManyToOne()    
-    @JoinColumn(name = "par_recurrencia", 
-                referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
+    @JoinColumn(name = "par_recurrencia", referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
     private ParRecurrencia parRecurrencia;
     
     @Column(name = "id_cnt_entidad_cta_x_pagar", length = 50, nullable = false)
@@ -64,7 +62,7 @@ public class CppGrupo extends AbstractEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "CppProveedorCliente[ idProveedorCliente=" + idGrupo + " ]";
+        return "CppGrupo[ idGrupo=" + idGrupo + " ]";
     }
 
     public Long getIdGrupo() {

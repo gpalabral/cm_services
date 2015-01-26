@@ -1,7 +1,6 @@
 package com.bap.erp.modelo.par;
 
 import com.bap.erp.modelo.ERP;
-import com.bap.erp.modelo.ERP;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +13,9 @@ import javax.persistence.Table;
 @Table(name = "PAR_RECURRENCIA")
 public class ParRecurrencia implements Serializable {
 
-    private static final long serialVersionUID = ERP.serialVersionIdErp;
-    
+    private static final long serialVersionUID = ERP.serialVersionIdErp;    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo", nullable = false)
     private String codigo;
     

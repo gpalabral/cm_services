@@ -1,42 +1,63 @@
 package com.bap.erp.modelo.cpp;
 
+import com.bap.erp.modelo.AbstractEntity;
 import com.bap.erp.modelo.ERP;
+import com.bap.erp.modelo.par.ParEstado;
+import com.bap.erp.modelo.par.ParTipoDocumento;
+import com.bap.erp.modelo.par.ParTipoProveedorCliente;
+import com.bap.erp.modelo.par.ParTipoRegistro;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "CPP_PROVEEDOR_CLIENTE")
-public class CppProveedorCliente implements Serializable {
+public class CppProveedorCliente extends AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = ERP.serialVersionIdErp;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_proveedor_cliente", nullable = false)
     private Long idProveedorCliente;
-    @Column(name = "tipo_proveedor_cliente", length = 5, nullable = false)
-    private String tipoProoveedorCliente; //Natural, Juridico
+    
+    @ManyToOne()    
+    @JoinColumn(name = "par_tipo_proveedor",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
+    private ParTipoProveedorCliente parTipoProveedorCliente; //Natural, Juridico    
+    
     @Column(name = "razon_social", length = 50)
     private String razonSocial;
+    
     @Column(name = "nombre", length = 50)
     private String nombre;
+    
     @Column(name = "primer_apellido", length = 50)
     private String primerApellido;
+    
     @Column(name = "segundo_apellido", length = 50)
     private String segundoApellido;
-    @Column(name = "estado", length = 5, nullable = false)
-    private String estado; //Vigente, No Vigente
-    @Column(name = "tipo_registro", length = 5, nullable = false)
-    private String tipoRegistro; //Proveedor. Cliente, Ambos
-    @Column(name = "tipo_documento", length = 5, nullable = false)
-    private String tipoDocumento; //CI, Nit, etc..
+    
+    @ManyToOne()    
+    @JoinColumn(name = "par_estado",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
+    private ParEstado parEstado; //Vigente, No Vigente
+    
+    @ManyToOne()    
+    @JoinColumn(name = "par_tipo_registro",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
+    private ParTipoRegistro parTipoRegistro;//Proveedor. Cliente, Ambos
+    
+    @ManyToOne()    
+    @JoinColumn(name = "par_tipo_documento",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
+    private ParTipoDocumento parTipoDocumento;//CI, Nit, etc..
+        
     @Column(name = "numero_documento", length = 5, nullable = false)
     private String numeroDocumento;
     @Column(name = "sigla", length = 10)
@@ -59,81 +80,15 @@ public class CppProveedorCliente implements Serializable {
     private String logo;
     @Column(name = "fecha_aniversario")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAniversario;    
-    @Column(name = "fecha_alta", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-    @Column(name = "usuario_alta", length = 50, nullable = false)
-    private String usuarioAlta;
-    @Column(name = "fecha_modificacion", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;    
-    @Column(name = "usuario_modificacion", length = 50, nullable=false)
-    private String usuarioModificacion;
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;    
-    @Column(name = "usuario_baja", length = 50)
-    private String usuarioBaja;
+    private Date fechaAniversario;            
     
-    
-    
-
     public String getCorreoElectronico() {
         return correoElectronico;
     }
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
-    }
-
-    public Date getFechaAlta() {
-        return fechaAlta;
-    }
-
-    public void setFechaAlta(Date fechaAlta) {
-        this.fechaAlta = fechaAlta;
-    }
-
-    public String getUsuarioAlta() {
-        return usuarioAlta;
-    }
-
-    public void setUsuarioAlta(String usuarioAlta) {
-        this.usuarioAlta = usuarioAlta;
-    }
-
-    public Date getFechaModificacion() {
-        return fechaModificacion;
-    }
-
-    public void setFechaModificacion(Date fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
-    }
-
-    public String getUsuarioModificacion() {
-        return usuarioModificacion;
-    }
-
-    public void setUsuarioModificacion(String usuarioModificacion) {
-        this.usuarioModificacion = usuarioModificacion;
-    }
-
-    public Date getFechaBaja() {
-        return fechaBaja;
-    }
-
-    public void setFechaBaja(Date fechaBaja) {
-        this.fechaBaja = fechaBaja;
-    }
-
-    public String getUsuarioBaja() {
-        return usuarioBaja;
-    }
-
-    public void setUsuarioBaja(String usuarioBaja) {
-        this.usuarioBaja = usuarioBaja;
-    }  
+    }     
 
     @Override
     public int hashCode() {
@@ -167,14 +122,6 @@ public class CppProveedorCliente implements Serializable {
         this.idProveedorCliente = idProveedorCliente;
     }
 
-    public String getTipoProoveedorCliente() {
-        return tipoProoveedorCliente;
-    }
-
-    public void setTipoProoveedorCliente(String tipoProoveedorCliente) {
-        this.tipoProoveedorCliente = tipoProoveedorCliente;
-    }
-
     public String getRazonSocial() {
         return razonSocial;
     }
@@ -205,31 +152,7 @@ public class CppProveedorCliente implements Serializable {
 
     public void setSegundoApellido(String segundoApellido) {
         this.segundoApellido = segundoApellido;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getTipoRegistro() {
-        return tipoRegistro;
-    }
-
-    public void setTipoRegistro(String tipoRegistro) {
-        this.tipoRegistro = tipoRegistro;
-    }
-
-    public String getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
+    }    
 
     public String getNumeroDocumento() {
         return numeroDocumento;
@@ -309,6 +232,38 @@ public class CppProveedorCliente implements Serializable {
 
     public void setFechaAniversario(Date fechaAniversario) {
         this.fechaAniversario = fechaAniversario;
+    }
+
+    public ParTipoProveedorCliente getParTipoProveedorCliente() {
+        return parTipoProveedorCliente;
+    }
+
+    public void setParTipoProveedorCliente(ParTipoProveedorCliente parTipoProveedorCliente) {
+        this.parTipoProveedorCliente = parTipoProveedorCliente;
+    }
+
+    public ParEstado getParEstado() {
+        return parEstado;
+    }
+
+    public void setParEstado(ParEstado parEstado) {
+        this.parEstado = parEstado;
+    }
+
+    public ParTipoRegistro getParTipoRegistro() {
+        return parTipoRegistro;
+    }
+
+    public void setParTipoRegistro(ParTipoRegistro parTipoRegistro) {
+        this.parTipoRegistro = parTipoRegistro;
+    }
+
+    public ParTipoDocumento getParTipoDocumento() {
+        return parTipoDocumento;
+    }
+
+    public void setParTipoDocumento(ParTipoDocumento parTipoDocumento) {
+        this.parTipoDocumento = parTipoDocumento;
     }
 
   

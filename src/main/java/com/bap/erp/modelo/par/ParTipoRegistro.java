@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "par_tipo_registro")
+@Table(name = "PAR_TIPO_REGISTRO")
 public class ParTipoRegistro implements Serializable {
 
     private static final long serialVersionUID = ERP.serialVersionIdErp;
