@@ -32,7 +32,7 @@ public class ParValorWS {
     
     @GET
     @Path("/get")
-    @ApiOperation(value="Retrieves all cppGrupo")
+    @ApiOperation(value="Retrieves all ParValor")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getParValor() {
         List<ParValor> list=parValorService.getParValor();
