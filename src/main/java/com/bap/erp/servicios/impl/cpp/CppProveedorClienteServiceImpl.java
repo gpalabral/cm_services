@@ -1,7 +1,6 @@
 package com.bap.erp.servicios.impl.cpp;
 
 import com.bap.erp.dao.IGenericDao;
-import com.bap.erp.modelo.cpp.CppGrupo;
 import com.bap.erp.modelo.cpp.CppProveedorCliente;
 import com.bap.erp.servicios.cpp.CppProveedorClienteService;
 import java.util.Date;
@@ -23,7 +22,7 @@ public class CppProveedorClienteServiceImpl implements CppProveedorClienteServic
     public CppProveedorCliente persistCppProveedorCliente(CppProveedorCliente cppProveedorCliente) {
         cppProveedorCliente.setIdProveedorCliente(null);
         cppProveedorCliente.setFechaAlta(new Date());
-        cppProveedorCliente.setUsuarioAlta("HENRRY");
+        cppProveedorCliente.setUsuarioAlta("TEST");
         
         dao.create(cppProveedorCliente);
         
