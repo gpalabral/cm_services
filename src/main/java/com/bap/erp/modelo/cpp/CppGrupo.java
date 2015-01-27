@@ -29,7 +29,7 @@ public class CppGrupo extends AbstractEntity implements Serializable {
 
     @ManyToOne()    
     @JoinColumn(name = "par_recurrencia", referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
-    private ParRecurrencia parRecurrencia;
+    private ParRecurrencia parRecurrencia; //periodica, no_periodica
     
     @Column(name = "id_cnt_entidad_cta_x_pagar", length = 50, nullable = false)
     private Long idCntEntidadCtaXPagar;

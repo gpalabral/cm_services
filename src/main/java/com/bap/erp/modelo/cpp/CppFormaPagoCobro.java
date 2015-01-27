@@ -4,7 +4,6 @@ import com.bap.erp.modelo.AbstractEntity;
 import com.bap.erp.modelo.ERP;
 import com.bap.erp.modelo.par.ParEstado;
 import com.bap.erp.modelo.par.ParFormaDePago;
-import com.bap.erp.modelo.par.ParProveedorCombustible;
 import com.bap.erp.modelo.par.ParTipoMoneda;
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -41,11 +40,10 @@ public class CppFormaPagoCobro extends AbstractEntity implements Serializable {
     private String numeroCuenta;
     
     @Column(name = "banco", length = 50)
-    private String banco;
-          
-    @ManyToOne()    
-    @JoinColumn(name = "par_proveedor_combustible",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
-    private ParProveedorCombustible parProveedorCombustible; //Si, No    
+    private String banco;              
+    
+    @Column(name = "proveedor_combustible")
+    private Boolean proveedorCombustible;
     
     @ManyToOne()    
     @JoinColumn(name = "par_estado",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
@@ -143,14 +141,6 @@ public class CppFormaPagoCobro extends AbstractEntity implements Serializable {
         this.banco = banco;
     }
 
-    public ParProveedorCombustible getParProveedorCombustible() {
-        return parProveedorCombustible;
-    }
-
-    public void setParProveedorCombustible(ParProveedorCombustible parProveedorCombustible) {
-        this.parProveedorCombustible = parProveedorCombustible;
-    }
-
     public String getBeneficiario() {
         return beneficiario;
     }
@@ -174,5 +164,15 @@ public class CppFormaPagoCobro extends AbstractEntity implements Serializable {
     public void setCppProveedorCliente(CppProveedorCliente cppProveedorCliente) {
         this.cppProveedorCliente = cppProveedorCliente;
     }
+
+    public Boolean getProveedorCombustible() {
+        return proveedorCombustible;
+    }
+
+    public void setProveedorCombustible(Boolean proveedorCombustible) {
+        this.proveedorCombustible = proveedorCombustible;
+    }
+    
+    
       
 }
