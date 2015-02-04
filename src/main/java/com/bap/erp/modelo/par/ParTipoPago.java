@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PAR_TIPO_PROVEEDOR_CLIENTE")
-public class ParTipoProveedorCliente implements Serializable {
+@Table(name = "PAR_TIPO_PAGO")
+public class ParTipoPago implements Serializable {
 
     private static final long serialVersionUID = ERP.serialVersionIdErp;
     @Id
@@ -21,7 +21,7 @@ public class ParTipoProveedorCliente implements Serializable {
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    public ParTipoProveedorCliente() {
+    public ParTipoPago() {
     }
 
     public String getCodigo() {

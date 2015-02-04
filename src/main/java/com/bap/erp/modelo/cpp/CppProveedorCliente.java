@@ -31,7 +31,7 @@ public class CppProveedorCliente extends AbstractEntity implements Serializable 
     private Long idProveedorCliente;
     
     @ManyToOne()    
-    @JoinColumn(name = "par_tipo_proveedor",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
+    @JoinColumn(name = "par_tipo_proveedor_cliente",referencedColumnName = "codigo",nullable=true,foreignKey = @ForeignKey(name="none"))
     private ParTipoProveedorCliente parTipoProveedorCliente; //Natural, Juridico    
     
     @Column(name = "razon_social", length = 50)

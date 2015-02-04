@@ -182,3 +182,20 @@ INSERT INTO PAR_VALOR (fecha_alta, fecha_baja, fecha_modificacion, usuario_alta,
 VALUES (now(), NULL, now(),'test','test','test', 'CLI', 'TIPO REGISTRO', 'CLIENTE',NULL);
 INSERT INTO PAR_VALOR (fecha_alta, fecha_baja, fecha_modificacion, usuario_alta, usuario_baja, usuario_modificacion, codigo, contexto, descripcion, valor) 
 VALUES (now(), NULL, now(),'test','test','test', 'AMB', 'TIPO REGISTRO', 'AMBOS',NULL);
+/**
+Creacion de la vista par_tipo_pago
+*/
+CREATE VIEW par_tipo_pago AS
+    (
+        select 
+            codigo,            
+            descripcion
+        from
+            PAR_VALOR
+        where
+            contexto = 'TIPO PAGO' and fecha_baja is null
+    );
+INSERT INTO PAR_VALOR (fecha_alta, fecha_baja, fecha_modificacion, usuario_alta, usuario_baja, usuario_modificacion, codigo, contexto, descripcion, valor) 
+VALUES (now(), NULL, now(),'test','test','test', 'IGU', 'TIPO PAGO', 'IGUALES',NULL);
+INSERT INTO PAR_VALOR (fecha_alta, fecha_baja, fecha_modificacion, usuario_alta, usuario_baja, usuario_modificacion, codigo, contexto, descripcion, valor) 
+VALUES (now(), NULL, now(),'test','test','test', 'DIST', 'TIPO PAGO', 'DISTINTOS',NULL);
