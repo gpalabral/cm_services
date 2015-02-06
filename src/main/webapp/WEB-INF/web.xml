@@ -21,7 +21,7 @@
     </filter>
     <filter-mapping>
         <filter-name>CORSFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/erpws/*</url-pattern>
     </filter-mapping>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -46,7 +46,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>jersey-serlvet</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
+        <url-pattern>/erpws/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>JerseyJaxrsConfig</servlet-name>
@@ -57,7 +57,7 @@
         </init-param>
         <init-param>
                 <param-name>swagger.api.basepath</param-name>
-                <param-value>http://localhost:8084/CM_SERVICES/rest</param-value>
+                <param-value>http://localhost:8084/CM_SERVICES/erpws</param-value>
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
