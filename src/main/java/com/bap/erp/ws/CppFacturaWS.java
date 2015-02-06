@@ -54,5 +54,5 @@ public class CppFacturaWS {
         cppFacturaService.persistCppFactura(cppFactura);
         return Response.status(200).entity(cppFactura).build();
 
-    }
+    }    
 }
