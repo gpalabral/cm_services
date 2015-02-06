@@ -31,7 +31,7 @@
         <property name="jpaProperties">
             <props>
                 <!--*** HABILITAR / DESHABILITAR PARA RECREAR LA BD **-->
-                <!--prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop-->
+                <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
             </props>
         </property>
